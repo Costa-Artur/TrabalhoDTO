@@ -4,6 +4,9 @@ public class CustomerDTO
 {
     public string Name{get; set;} = string.Empty;
     public string Cpf{get; set;} = string.Empty;
-    
+
+    public Customer toObject () {
+        return new Customer (Name, Cpf);
+    }
 
 }

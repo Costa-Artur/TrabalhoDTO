@@ -9,4 +9,10 @@ public class CustomerResponseDTO {
         this.Name = Name;
     }
 
+    public CustomerResponseDTO () {
+    }
+
+    public CustomerResponseDTO toDTO (Customer customer) {
+        return new CustomerResponseDTO(customer.Name);
+    }
 }

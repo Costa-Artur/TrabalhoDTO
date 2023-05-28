@@ -6,4 +6,13 @@ public class Customer
     public string Name{get; set;} = string.Empty;
     public string Cpf{get; set;} = string.Empty;
 
+    public Customer () {
+    }
+
+    public Customer (string Name, string Cpf) {
+        this.Id = Id;
+        this.Name = Name;
+        this.Cpf = Cpf;
+    }
+
 }
