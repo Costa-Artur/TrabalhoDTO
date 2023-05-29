@@ -55,7 +55,7 @@ public class CustomersController : ControllerBase
     public ActionResult<CustomerDTO> CreateCustomer (CustomerDTO customer) 
     {
         var newCustomer = customer.toObject();
-        newCustomer.Id = Data.Instance.Customers.Max(c => c.Id)+1;
+        newCustomer.Id = Data.Instance.Customers.Any() ? Data.Instance.Customers.Max(c => c.Id)+1 : 1;
 
         Data.Instance.Customers.Add(newCustomer);
         return CreatedAtRoute
