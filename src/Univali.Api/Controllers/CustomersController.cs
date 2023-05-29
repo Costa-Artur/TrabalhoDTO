@@ -62,7 +62,7 @@ public class CustomersController : ControllerBase
         (
             "GetCustomerById",
             new {id = newCustomer.Id },
-            customer
+            newCustomer
         );
     }
 

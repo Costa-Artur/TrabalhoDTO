@@ -1,7 +1,6 @@
 namespace Univali.Api.Entities;
 
 public class CustomerResponseDTO {
-
     
     public string Name{get; set;} = string.Empty;
 
