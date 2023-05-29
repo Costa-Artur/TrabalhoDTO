@@ -87,12 +87,7 @@ public class CustomersController : ControllerBase
     public ActionResult DeleteCustomer (int id) 
     {
         var customers = Data.Instance.Customers;
-        if(customers != null){
-            customers.Remove(customers.FirstOrDefault(c => c.Id == id));
-            return NoContent();
-        } else {
-            return NoContent();
-        }
-        
+        customers.Remove(customers.FirstOrDefault(c => c.Id == id));
+        return NoContent();
     }
 }
