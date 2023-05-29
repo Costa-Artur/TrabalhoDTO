@@ -52,7 +52,7 @@ public class CustomersController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Customer> CreateCustomer (CustomerDTO customer) 
+    public ActionResult<CustomerDTO> CreateCustomer (CustomerDTO customer) 
     {
         var newCustomer = customer.toObject();
         newCustomer.Id = Data.Instance.Customers.Max(c => c.Id)+1;
@@ -62,7 +62,37 @@ public class CustomersController : ControllerBase
         (
             "GetCustomerById",
             new {id = newCustomer.Id },
-            newCustomer
+            customer
         );
+    }
+
+    [HttpPut("{id}")]
+    public ActionResult<CustomerDTO> UpdateCustomer (int id, CustomerDTO customer)
+    {
+        var newCustomer = Data.Instance.Customers.FirstOrDefault(c => c.Id == id);
+
+        if(newCustomer != null) 
+        {
+            newCustomer.Name = customer.Name;
+            newCustomer.Cpf = customer.Cpf;
+
+            return Ok(customer);
+        } else 
+        {
+            return NotFound();
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public ActionResult DeleteCustomer (int id) 
+    {
+        var customers = Data.Instance.Customers;
+        if(customers != null){
+            customers.Remove(customers.FirstOrDefault(c => c.Id == id));
+            return NoContent();
+        } else {
+            return NoContent();
+        }
+        
     }
 }
