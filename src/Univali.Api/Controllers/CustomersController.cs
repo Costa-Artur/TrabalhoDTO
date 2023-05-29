@@ -69,13 +69,13 @@ public class CustomersController : ControllerBase
     [HttpPut("{id}")]
     public ActionResult<CustomerDTO> UpdateCustomer (int id, CustomerDTO customer)
     {
-        var newCustomer = Data.Instance.Customers.FirstOrDefault(c => c.Id == id);
+         var updateCustomer = Data.Instance.Customers.FirstOrDefault(c => c.Id == id);
 
-        if(newCustomer != null) 
+        if(updateCustomer != null) 
         {
-            newCustomer.Name = customer.Name;
-            newCustomer.Cpf = customer.Cpf;
-
+            updateCustomer.Name = customer.Name;
+            updateCustomer.Cpf = customer.Cpf;
+            
             return Ok(customer);
         } else 
         {
